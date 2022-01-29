@@ -43,3 +43,74 @@ public double getDiscountPercent()    returns the percent of the total discount 
 
 If the customer is not a preferred customer the DiscountBill behaves at all times as if there is a total discount of 0.0 and no items have been discounted. 
 */
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Item {
+    double  itemPrice, itemDiscount;
+    String itemName;
+    Item(String itemName, double itemPrice, double itemDiscount) {
+        this.itemDiscount = itemDiscount;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+    }
+    double getPrice() {
+        return itemPrice;
+    }
+    double getDiscount() {
+        return itemDiscount;
+    }
+}
+
+class Employee {
+    String clerkName;
+    Employee(String clerkName) {
+        this.clerkName = clerkName;
+    }
+}
+
+class VegetableBill {
+    Employee clerk;
+    double totalAmount = 0;
+    List<Item> itemList = new ArrayList<Item>();
+    void setClerk(Employee clerk) {
+        this.clerk = clerk;
+    }
+    void add(Item item) {
+        itemList.add(item);
+    }
+    double getTotal() {
+        for (Item item : itemList) {
+            totalAmount += item.itemPrice;
+        }
+        return totalAmount;
+    }
+    void printReceipt() {
+        for (Item item : itemList) {
+            System.out.print(item.itemName + " : " + item.itemPrice);
+            System.out.println("");
+        }
+    }
+}
+class DiscountBill extends VegetableBill {
+    boolean preferred;
+    DiscountBill(boolean preferred) {
+        this.preferred = preferred;
+    }
+    int getDiscountCount() {
+        //  returns the number of items that were discounted, if any
+    }
+    double getDiscountAmount() {
+        //  returns the total discount for this list or items, if any
+    }
+    double getDiscountPercent() {
+        //  returns the percent of the total discount as a percent of what the total would have been otherwise discount will be 0.0
+    }
+}
+
+public class Main1 {
+    public static void main(String[] args) {
+
+    }
+}
